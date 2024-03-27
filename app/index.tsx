@@ -22,6 +22,7 @@ export default function App() {
     isReachingEnd,
     isRefreshing,
     size,
+    mutate,
     setSize,
   } = useGetNews();
 
@@ -34,6 +35,7 @@ export default function App() {
           <FlatList
             refreshControl={<RefreshControl refreshing={!!isRefreshing} />}
             refreshing={isRefreshing}
+            onRefresh={() => mutate()}
             data={filteredData}
             ListEmptyComponent={() => <AppText>No Data</AppText>}
             style={styles.list}

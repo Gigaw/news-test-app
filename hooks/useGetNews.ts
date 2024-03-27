@@ -8,7 +8,7 @@ const PAGE_SIZE = 10;
 export default function useGetNews() {
   const now = dayjs();
   const weekAgo = now.subtract(7, "day");
-  const { data, error, size, setSize, isValidating, isLoading } =
+  const { data, error, size, mutate, setSize, isValidating, isLoading } =
     useSWRInfinite(
       (index) =>
         `/everything?from=${weekAgo.format(
@@ -42,6 +42,7 @@ export default function useGetNews() {
     isReachingEnd,
     isRefreshing,
     size,
+    mutate,
     setSize,
   };
 }
